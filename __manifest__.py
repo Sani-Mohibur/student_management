@@ -1,0 +1,16 @@
+{
+    'name': 'Student Management',
+    'version': '1.0',
+    'summary': 'A simple module to manage students and courses.',
+    'author': 'Mohibur Rahman Sani',
+    'category': 'Education',
+    'depends': ['base'],
+    'data': ['security/ir.model.access.csv',
+             'report/student_report.xml',
+             'views/student_view.xml',
+             'views/course_view.xml',
+             ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

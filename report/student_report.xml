@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_students_per_course" model="ir.actions.report">
+        <field name="name">Enrolled Students</field>
+        <field name="model">student.management.course</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">student_management.report_template</field>
+        <field name="report_file">student_management.report_template</field>
+        <field name="binding_model_id" ref="model_student_management_course"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="course">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Enrolled Students for: <span t-field="course.name"/>
+                        </h2>
+                        <table class="table table-sm mt32">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Roll No</th>
+                                    <th>Department</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="course.student_ids" t-as="student">
+                                    <td>
+                                        <span t-field="student.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.roll_no"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="student.department"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
